@@ -32,6 +32,7 @@ import components.texts.ForgotPasswordHyperlink
 import components.texts.InstagramSignUpHyperlink
 import components.texts.InstagramTextLogo
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 import instaclone.resources.MR
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -106,7 +107,7 @@ private fun LoginScreenContent(
             }) {
                 Icon(
                     painterResource(MR.images.arrow_back),
-                    contentDescription = "Go back"
+                    contentDescription = stringResource(MR.strings.back_button)
                 )
             }
         }
@@ -140,7 +141,7 @@ private fun LoginScreenContent(
                     onClick = onLoginClick)
                 FacebookSignUpHyperlink(modifier = Modifier.padding(start = 10.dp))
                 CustomDivider(
-                    text = "OR",
+                    text = stringResource(MR.strings.or_divider),
                     rowModifier = Modifier.padding(vertical = 20.dp),
                     textModifier = Modifier.padding(10.dp)
                 )
