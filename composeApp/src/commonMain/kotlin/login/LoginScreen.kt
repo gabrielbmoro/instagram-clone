@@ -126,7 +126,7 @@ private fun LoginScreenContent(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            InstagramTextLogo()
+            InstagramTextLogo(modifier = Modifier.padding(top = 60.dp, bottom = 40.dp))
             Column(
                 verticalArrangement = Arrangement.SpaceAround,
                 horizontalAlignment = Alignment.CenterHorizontally,

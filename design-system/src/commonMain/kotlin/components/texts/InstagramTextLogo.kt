@@ -9,9 +9,9 @@ import dev.icerock.moko.resources.compose.painterResource
 import instaclone.resources.MR
 
 @Composable
-fun InstagramTextLogo() {
+fun InstagramTextLogo(modifier: Modifier = Modifier) {
     Image(
-        modifier = Modifier.padding(top = 60.dp, bottom = 40.dp),
+        modifier = modifier.padding(top = 60.dp, bottom = 40.dp),
         painter = painterResource(MR.images.instagram_text_logo),
         contentDescription = "Instagram text logo"
     )
