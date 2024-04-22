@@ -71,19 +71,19 @@ class LoginScreenModel : ScreenModel {
     fun onUserNameChanged(userName: String) {
         _state.update {
             it.copy(
-                username = userName
+                username = userName,
+                loginButtonBackgroundColor = updateLoginButtonColor(inputFieldList)
             )
         }
-        uiState.value.loginButtonBackgroundColor = updateLoginButtonColor(inputFieldList)
     }
 
     fun onPasswordChanged(password: String) {
         _state.update {
             it.copy(
-                password = password
+                password = password,
+                loginButtonBackgroundColor = updateLoginButtonColor(inputFieldList)
             )
         }
-        uiState.value.loginButtonBackgroundColor = updateLoginButtonColor(inputFieldList)
     }
 
     fun onLoginClick() {
