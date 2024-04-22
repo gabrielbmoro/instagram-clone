@@ -17,10 +17,10 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(projects.resources)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.screenModel)
             implementation(libs.voyager.koin)
-            implementation(projects.resources)
             implementation(libs.moko.compose.resources)
         }
     }
