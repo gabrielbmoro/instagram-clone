@@ -149,7 +149,10 @@ private fun LoginScreenContent(
 
                 Spacer(modifier = Modifier.size(15.dp))
 
-                ForgotPasswordHyperlink()
+                ForgotPasswordHyperlink(
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(horizontal = horizontalPadding)
+                )
                 LoginButton(
                     modifier = Modifier.fillMaxWidth().padding(horizontalPadding),
                     isEnabled = uiState.username.isNotBlank() && uiState.password.isNotBlank(),
