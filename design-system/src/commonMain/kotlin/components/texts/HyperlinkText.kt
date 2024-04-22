@@ -15,7 +15,10 @@ fun HyperLinkText(
     fontWeight: FontWeight = FontWeight.Normal,
     onClick: () -> Unit
 ) {
-    Text(text = text, fontSize = 12.sp, fontWeight = fontWeight, color = TextColor.HYPERLINK_BLUE.color,
+    Text(text = text,
+        fontSize = 12.sp,
+        fontWeight = fontWeight,
+        color = TextColor.HYPERLINK_BLUE.color,
         modifier = modifier.clickable {
             onClick()
         }

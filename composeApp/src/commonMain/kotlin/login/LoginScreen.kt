@@ -153,7 +153,8 @@ private fun LoginScreenContent(
                 LoginButton(
                     modifier = Modifier.fillMaxWidth().padding(horizontalPadding),
                     isEnabled = uiState.username.isNotBlank() && uiState.password.isNotBlank(),
-                    onClick = onLoginClick)
+                    onClick = onLoginClick
+                )
                 FacebookSignUpHyperlink(modifier = Modifier.padding(start = 10.dp))
                 CustomDivider(
                     text = stringResource(MR.strings.or_divider),
@@ -169,5 +170,5 @@ private fun LoginScreenContent(
 
 private fun updateLoginButtonColor(inputFields: List<String>): ButtonColor {
     val allFilled = inputFields.all { field -> field.isNotBlank() }
-    return if(allFilled) ButtonColor.BLUE_100A else ButtonColor.BLUE_50A
+    return if (allFilled) ButtonColor.BLUE_100A else ButtonColor.BLUE_50A
 }

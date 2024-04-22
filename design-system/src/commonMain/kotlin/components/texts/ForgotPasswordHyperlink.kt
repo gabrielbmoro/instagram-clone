@@ -21,7 +21,10 @@ fun ForgotPasswordHyperlink() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.End
     ) {
-        HyperLinkText(text = stringResource(MR.strings.forgot_password), fontWeight = FontWeight.W500) {
+        HyperLinkText(
+            text = stringResource(MR.strings.forgot_password),
+            fontWeight = FontWeight.W500
+        ) {
             /* TODO ADD NAVIGATION ACTION */
         }
     }

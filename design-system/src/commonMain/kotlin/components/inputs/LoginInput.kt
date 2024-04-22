@@ -29,7 +29,8 @@ fun UsernameInput(
     onTextChange: (String) -> Unit
 ) {
     TextField(
-        value = currentValue, onValueChange = {
+        value = currentValue,
+        onValueChange = {
             onTextChange(it)
         },
         modifier = Modifier
@@ -49,8 +50,10 @@ fun PasswordInput(
     onPasswordVisibleClick: () -> Unit
 ) {
     val passwordIcon = if (isPasswordVisible) MR.images.visibility_on else MR.images.visibility_off
-    val contentDescriptionIcon = if (isPasswordVisible) MR.strings.password_visible else MR.strings.password_not_visible
-    val transformation:VisualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
+    val contentDescriptionIcon =
+        if (isPasswordVisible) MR.strings.password_visible else MR.strings.password_not_visible
+    val transformation: VisualTransformation =
+        if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
 
     TextField(
         value = currentValue, onValueChange = {
@@ -65,25 +68,27 @@ fun PasswordInput(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         visualTransformation = transformation,
         trailingIcon = {
-                IconButton(onClick = {
-                    onPasswordVisibleClick()
-                }) {
-                    Icon(
-                        painterResource(passwordIcon),
-                        tint = Color.Gray,
-                        contentDescription = stringResource(contentDescriptionIcon)
-                    )
-                }
+            IconButton(onClick = {
+                onPasswordVisibleClick()
+            }) {
+                Icon(
+                    painterResource(passwordIcon),
+                    tint = Color.Gray,
+                    contentDescription = stringResource(contentDescriptionIcon)
+                )
+            }
         }
     )
 }
 
 @Composable
 private fun getTextFieldColors(): TextFieldColors {
-    return TextFieldDefaults.textFieldColors(backgroundColor = TextColor.BLACK_10A.color,
+    return TextFieldDefaults.textFieldColors(
+        backgroundColor = TextColor.BLACK_10A.color,
         placeholderColor = TextColor.BLACK_20A.color,
         textColor = TextColor.DARK_GRAY.color,
         unfocusedIndicatorColor = Color.Transparent,
         focusedIndicatorColor = Color.Transparent,
-        cursorColor = TextColor.BLACK_20A.color,)
+        cursorColor = TextColor.BLACK_20A.color,
+    )
 }
