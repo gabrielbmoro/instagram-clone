@@ -11,9 +11,6 @@ import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
@@ -21,8 +18,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import colors.TextColor
-import dev.icerock.moko.resources.ImageResource
-import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import instaclone.resources.MR
@@ -49,17 +44,13 @@ fun UsernameInput(
 @Composable
 fun PasswordInput(
     currentValue: String,
-    onTextChange: (String) -> Unit
+    onTextChange: (String) -> Unit,
+    isPasswordVisible: Boolean,
+    onPasswordVisibleClick: () -> Unit
 ) {
-    val passwordMask = remember {
-        mutableStateOf<VisualTransformation>(PasswordVisualTransformation())
-    }
-    val passwordIcon = remember {
-        mutableStateOf(MR.images.visibility_on)
-    }
-    val contentDescriptionIcon = remember {
-        mutableStateOf(MR.strings.password_visible)
-    }
+    val passwordIcon = if (isPasswordVisible) MR.images.visibility_on else MR.images.visibility_off
+    val contentDescriptionIcon = if (isPasswordVisible) MR.strings.password_visible else MR.strings.password_not_visible
+    val transformation:VisualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
 
     TextField(
         value = currentValue, onValueChange = {
@@ -72,35 +63,19 @@ fun PasswordInput(
         colors = getTextFieldColors(),
         shape = RoundedCornerShape(5.dp),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        visualTransformation = passwordMask.value,
+        visualTransformation = transformation,
         trailingIcon = {
                 IconButton(onClick = {
-                    passwordSwitch(passwordIcon, passwordMask, contentDescriptionIcon)
+                    onPasswordVisibleClick()
                 }) {
                     Icon(
-                        painterResource(passwordIcon.value),
+                        painterResource(passwordIcon),
                         tint = Color.Gray,
-                        contentDescription = stringResource(contentDescriptionIcon.value)
+                        contentDescription = stringResource(contentDescriptionIcon)
                     )
                 }
         }
     )
-}
-
-private fun passwordSwitch(
-    icon: MutableState<ImageResource>,
-    passwordMask: MutableState<VisualTransformation>,
-    contentDescriptionIcon: MutableState<StringResource>
-) {
-    if (icon.value == MR.images.visibility_off) {
-        icon.value = MR.images.visibility_on
-        passwordMask.value = PasswordVisualTransformation()
-        contentDescriptionIcon.value = MR.strings.password_visible
-    } else {
-        icon.value = MR.images.visibility_off
-        passwordMask.value = VisualTransformation.None
-        contentDescriptionIcon.value = MR.strings.password_not_visible
-    }
 }
 
 @Composable

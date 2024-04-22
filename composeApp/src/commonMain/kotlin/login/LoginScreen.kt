@@ -43,7 +43,8 @@ import layout.horizontalPadding
 data class LoginUIState(
     val username: String = "",
     val password: String = "",
-    var loginButtonBackgroundColor: ButtonColor = ButtonColor.BLUE_50A
+    var loginButtonBackgroundColor: ButtonColor = ButtonColor.BLUE_50A,
+    var passwordVisibility: Boolean = false
 )
 
 class LoginScreen : Screen {
@@ -55,7 +56,8 @@ class LoginScreen : Screen {
             uiState = uiState,
             onUserNameChanged = viewModel::onUserNameChanged,
             onPasswordChanged = viewModel::onPasswordChanged,
-            onLoginClick = viewModel::onLoginClick
+            onLoginClick = viewModel::onLoginClick,
+            onPasswordVisibleClick = viewModel::onPasswordVisibilityChange
         )
     }
 }
@@ -87,6 +89,14 @@ class LoginScreenModel : ScreenModel {
     fun onLoginClick() {
 
     }
+
+    fun onPasswordVisibilityChange() {
+        _state.update {
+            it.copy(
+                passwordVisibility = !it.passwordVisibility
+            )
+        }
+    }
 }
 
 @Composable
@@ -94,7 +104,8 @@ private fun LoginScreenContent(
     uiState: LoginUIState,
     onUserNameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
-    onLoginClick: () -> Unit
+    onLoginClick: () -> Unit,
+    onPasswordVisibleClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -129,7 +140,11 @@ private fun LoginScreenContent(
 
                 PasswordInput(
                     currentValue = uiState.password,
-                    onTextChange = onPasswordChanged
+                    onTextChange = onPasswordChanged,
+                    isPasswordVisible = uiState.passwordVisibility,
+                    onPasswordVisibleClick = {
+                        onPasswordVisibleClick()
+                    }
                 )
 
                 Spacer(modifier = Modifier.size(15.dp))
