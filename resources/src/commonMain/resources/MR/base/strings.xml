@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="click_me">Click me!</string>
+    <string name="click_me">Click me!</string>
+    <string name="placeholder_user_login">Phone number, email or username</string>
+    <string name="placeholder_user_password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="facebook_login">Log in with Facebook</string>
+    <string name="cta_no_account">Don\'t have an account?</string>
+    <string name="sign_up_cta">Sign up.</string>
+    <string name="login_button">Log in</string>
+    <string name="login_footer">Instagram from Facebook</string>
+    <string name="or_divider">OR</string>
 
     <!--    CONTENT DESCRIPTION-->
     <string name="desc_home_menu">Home navigation</string>
@@ -8,4 +18,8 @@
     <string name="desc_add_menu">Add New</string>
     <string name="desc_favorite_menu">Favorite navigation</string>
     <string name="desc_profile_menu">Profile navigation</string>
+    <string name="password_visible">Password visible</string>
+    <string name="password_not_visible">Password not visible</string>
+    <string name="facebook_logo">"Facebook logo"</string>
+    <string name="back_button">""Go back"</string>
 </resources>
